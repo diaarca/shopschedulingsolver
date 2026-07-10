@@ -5,7 +5,7 @@
 namespace shopschedulingsolver
 {
 
-struct LocalSearchParameters: Parameters
+struct LocalSearchPfssParameters: Parameters
 {
     /** Maximum number of iterations. */
     Counter maximum_number_of_iterations = -1;
@@ -36,16 +36,14 @@ struct LocalSearchParameters: Parameters
     }
 };
 
-struct LocalSearchOutput: Output
+struct LocalSearchPfssOutput: Output
 {
-    LocalSearchOutput(
+    LocalSearchPfssOutput(
             const Instance& instance):
         Output(instance) { }
 
-
     /** Number of iterations. */
     Counter number_of_iterations = 0;
-
 
     virtual int format_width() const override { return 31; }
 
@@ -68,10 +66,10 @@ struct LocalSearchOutput: Output
     }
 };
 
-const LocalSearchOutput local_search_pfss_makespan(
+const LocalSearchPfssOutput local_search_pfss(
         const Instance& instance,
         std::mt19937_64& generator,
         Solution* initial_solution = nullptr,
-        const LocalSearchParameters& parameters = {});
+        const LocalSearchPfssParameters& parameters = {});
 
 }
